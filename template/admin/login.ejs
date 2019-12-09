@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+      body,html{
+        width: 100%;
+        height: 100%;
+      }
+      .login_dialog{
+        width: 100%;
+        height: 100%;
+        /* background: url('./img/1.jpg') no-repeat; */
+        /* background-size: 100% 100%; */
+        background: rgba(0, 0, 0, .2);
+      }
+      .form{
+        padding: 30px;
+        background:rgba(0, 0, 0, .2) ;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      input{
+        background-color:#ccc;
+        margin: 20px 0;
+      }
+      input[type=submit]{
+        display: block;
+        margin: 0 auto;
+        width: 60px;
+        height: 30px;
+        color: royalblue;
+      }
+  </style>
+</head>
+<body>
+    <div class="login_dialog">
+      <form action="/admin/login" class="form" method="post">
+        用户 ：<input type="text" name="username"><br>
+        密码 ：<input type="password" name="password"><br>
+        <input type="submit" value="登陆">
+      </form>
+    </div>
+</body>
+</html>
