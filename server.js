@@ -27,7 +27,7 @@ server.use(cookieParser());
   server.use(cookieSession({
     name: 'sess_id',
     keys: keys,
-    maxAge: 20*60*1000  //20min
+    maxAge: 60*20*60*1000  //20min
   }));
 })();
 
@@ -38,7 +38,7 @@ server.set('view engine', 'html');
 
 //4.route
 // server.use('/', require('./route/web.js')());
-server.use('/admin/', require('./router/admin.js')());
+server.use('/admin/', require('./router/admin/index.js')());
 
 //5.default：static
 server.use(static('./static/'));

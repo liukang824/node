@@ -6,4 +6,4 @@ module.exports = {
     obj.update(str)
     return obj.digest('hex')
   }
-}
+} 
