@@ -7,7 +7,7 @@ router.get('/',(req,res)=>{
 
   switch(req.query.act){
     case 'mod':
-      db.query(`SELECT *FORM banner_table WHERE id=${req.query.id}`,(err,data)=>{
+      db.query(`SELECT *FROM banner_table WHERE ID=${req.query.id}`,(err,data)=>{
         if(err){
           console.error(err);
           res.status(500).send('database err').end()
@@ -52,14 +52,31 @@ router.post('/',(req,res)=>{
   if(!title || !description || !href){
     res.status(500).send('arg  error')
   }else{
-    db.query(`INSERT INTO banner_table (title,description,href) VALUE ('${title}','${description}','${href}')`,(err,data)=>{
-      if(err){
-
-        res.status(500).send('database error').end()
-      }else{
-        res.redirect('/admin/banners');
-      }
-    })
+    if(req.body.mod_id){
+      console.log(88888888)
+      db.query(`UPDATE banner_table SET \
+      title='${title}',\
+      description='${description}',\
+      href='${href}' \
+      WHERE ID=${req.body.mod_id}`,(err,data)=>{
+        if(err){
+          console.log(err)
+          res.status(500).send(`${err}`).end()
+        }else{
+          res.redirect('/admin/banners')
+        }
+      })
+    }else{
+      db.query(`INSERT INTO banner_table (title, description, href) VALUE('${title}', '${description}', '${href}')`, (err, data)=>{
+        if(err){
+  
+          res.status(500).send('database error').end()
+        }else{
+          res.redirect('/admin/banners');
+          // console.log(data)
+        }
+      })
+    }
   }
   
 })
